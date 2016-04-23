@@ -1,0 +1,6 @@
+#requirements.txt for pdxpixel
+Django==1.9
+BeautifulSoup4
+Pygments
+pytz
+django_compressor
