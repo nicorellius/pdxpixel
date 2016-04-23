@@ -16,9 +16,11 @@ from fabric.api import env, local, run, get, put
 
 env.use_ssh_config = True
 
-REPO_URL = 'https://github.com/nicorellius/fiblist.git'
-SETTINGS_FOLDER = 'fiblist/conf/settings'
+# Fill these in with project-specific values, eg, repo name, project name, etc
 PROJECT = 'fiblist'
+GIT_USER = 'nicorellius'
+REPO_URL = 'https://github.com/{0}/{1}.git'.format(GIT_USER, PROJECT)
+SETTINGS_FOLDER = '{0}/conf/settings'.format(PROJECT)
 VIRTENV_FOLDER = '/home/{0}/dev/virtenvs/{1}'.format(env.user, PROJECT)
 
 
@@ -93,7 +95,7 @@ def _generate_secret_key(source_folder, secret_key_file):
             # TODO -- the below requires `from __future__ import print_function` to work.
             # print('{0}'.format(generated_key), file=text_file)
 
-            put(use_sudo=True, local_path=text_file, remote_path='/etc/prv/fiblist/secret_key.txt')
+            put(use_sudo=True, local_path=text_file, remote_path='/etc/prv/{0}/secret_key.txt'.format(PROJECT))
             sudo('rm -rf /tmp/secret_key.txt')
 
 
@@ -139,4 +141,3 @@ def _update_database(source_folder):
 def _restart_servers(http_server, uwsgi_server):
 
     sudo('restart {0} && restart {1}'.format(http_server, uwsgi_server))
-    # sudo('restart {0}'.format(uwsgi_server))
