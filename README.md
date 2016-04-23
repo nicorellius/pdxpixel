@@ -4,5 +4,5 @@
 
 PDX Pixel web site and blog for sharing and collaborating ideas about programming, IT/operations, and web application development. 
 
-Owned and oeprted by CISTech Consulting.  
+Owned and operated by CISTech Consulting.  
 [cistechconsulting.com](http://cistechconsulting.com)
