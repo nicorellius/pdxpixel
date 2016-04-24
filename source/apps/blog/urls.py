@@ -1,9 +1,10 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-from blog import views
+from . import views
 
-urlpatterns = patterns('',
+urlpatterns = [
+
     url(r'^$', views.index, name='index'),
+
     url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post'),
-    url(r'^logout/', 'blog.views.logout'),
-)
+]

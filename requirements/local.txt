@@ -1,0 +1,2 @@
+selenium==2.53.1
+django-debug-toolbar==1.4

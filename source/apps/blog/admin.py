@@ -1,8 +1,6 @@
 from django.contrib import admin
-from django import forms
-from blog.models import Post
-from pagedown.widgets import PagedownWidget, AdminPagedownWidget
-from django.db import models
+from .models import Post
+
 
 class PostAdmin(admin.ModelAdmin):
 
@@ -23,10 +21,6 @@ class PostAdmin(admin.ModelAdmin):
     
     # prepopulate the slug from the title - big timesaver!
     prepopulated_fields = {"slug": ("title",)}
-    
-    # pagedown override for admin posts
-    formfield_overrides = {
-        models.TextField: {'widget': AdminPagedownWidget },
-    }
+
 
 admin.site.register(Post, PostAdmin)
