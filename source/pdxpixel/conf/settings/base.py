@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(*_DIR, ...)
-import os
 import environ  # https://github.com/joke2k/django-environ
 
 # /home/nick/dev/django/projects/pdxpixel
@@ -38,15 +37,15 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'source.apps.blog',
-)
+    'apps.blog',
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,8 +59,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'pdxpixel.conf.urls'
 
-WSGI_APPLICATION = 'pdxpixel.conf.wsgi.local.application'
-
+# WSGI_APPLICATION = 'pdxpixel.conf.wsgi.local'
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -97,8 +95,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    # os.path.join(SOURCE_DIR, 'lists/static')
-    str(SOURCE_DIR.path('lists/static'))
+    # str(SOURCE_DIR.path('apps/blog/static'))
 ]
 
-STATIC_ROOT = str(PROJECT_DIR.path('static'))  # os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = str(PROJECT_DIR.path('static'))
+

@@ -8,13 +8,13 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'description']
     
     # fields to filter the change list with
-    list_filter = ['published', 'pub_date']
+    list_filter = ['status', 'published']
     
     # fields to search in change list
     search_fields = ['title', 'description', 'content']
     
     # enable the date drill down on change list
-    date_hierarchy = 'pub_date'
+    date_hierarchy = 'published'
     
     # enable the save buttons on top on change form
     save_on_top = True
