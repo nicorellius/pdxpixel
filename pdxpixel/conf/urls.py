@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # error pages
 handler400 = 'core.views.custom_bad_request'
@@ -16,3 +17,5 @@ urlpatterns = [
 
     # url(r'^(\d)/$', 'core.views.custom_server_error'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

@@ -2,23 +2,60 @@
 
 {% block title %} Blog Archive {% endblock %}
 
-{% block content %}
-    <h1>PDX Pixel Blog Archive</h1>
+{% block blog_list %}
+
+<!-- Blog Entries Column -->
+<div class="col-md-8">
+
+    <h1 style="margin: -1em 0 0 3em;">Blog Archive</h1>
+
+    <hr>
+
     {% for post in posts %}
     <div class="post">
         <h3>
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         </h3>
         <p>{{ post.description }}</p>
-        <p class="italics">
-            Posted on
-            <time datetime="{{ post.pub_date|date:"c" }}">
-            {{ post.pub_date|date }}
-            </time>
-        </p>
+
     </div>
+
+    <p class="lead">
+        by <a href="#">{{ post.author }}</a>
+    </p>
+    <p class="italics">
+        <span class="glyphicon glyphicon-time"></span>
+        Posted on
+        <time datetime="{{ post.pub_date|date:"c" }}">
+        {{ post.pub_date|date }}
+        </time>
+    </p>
+
+    <hr>
+
+    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+    <hr>
+
+    <p></p>
+
+    <a class="btn btn-primary" href="{{ post.get_absolute_url }}">
+        Read More <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
     {% endfor %}
 
-    <p><a href="/blog/">Go back home...</a></p>
+    <hr>
 
-{% endblock %}
+    <!-- Pager -->
+    <ul class="pager">
+        <li class="previous">
+            <a href="#">&larr; Older</a>
+        </li>
+        <li class="next">
+            <a href="#">Newer &rarr;</a>
+        </li>
+    </ul>
+
+</div>
+
+{% endblock blog_list %}

@@ -12,26 +12,34 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import environ  # https://github.com/joke2k/django-environ
 
 # /home/nick/dev/django/projects/pdxpixel
-PROJECT_DIR = environ.Path(__file__) - 5
+PROJECT_DIR = environ.Path(__file__) - 4
 
-# /home/nick/dev/django/projects/pdxpixel/source
-SOURCE_DIR = environ.Path(__file__) - 4
+# /home/nick/dev/django/projects/pdxpixel/pdxpixel
+SITE_DIR = environ.Path(__file__) - 3
 
-# /home/nick/dev/django/projects/pdxpixel/source/pdxpixel/conf
-ONCF_DIR = environ.Path(__file__) - 2
+# /home/nick/dev/django/projects/pdxpixel/pdxpixel/conf
+CONF_DIR = environ.Path(__file__) - 2
 
-# /home/nick/dev/django/projects/pdxpixel/source/pdxpixel/conf/settings
+# /home/nick/dev/django/projects/pdxpixel/pdxpixel/conf/settings
 SETTINGS_DIR = environ.Path(__file__) - 1
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
-TEMPLATE_DIRS = (
-    # os.path.join(SOURCE_DIR, 'templates'),
-    str(SOURCE_DIR.path('templates')),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            str(SITE_DIR.path('templates'))
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+            ],
+            'debug': True
+        }
+    }
+]
 
 ALLOWED_HOSTS = []
 
@@ -57,7 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'pdxpixel.conf.urls'
+ROOT_URLCONF = 'conf.urls'
 
 # WSGI_APPLICATION = 'pdxpixel.conf.wsgi.local'
 
@@ -94,9 +102,8 @@ USE_TZ = True
 # static files
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    # str(SOURCE_DIR.path('apps/blog/static'))
-]
-
-STATIC_ROOT = str(PROJECT_DIR.path('static'))
+STATICFILES_DIRS = (
+    str(SITE_DIR.path('apps/blog/static')),
+    str(SITE_DIR.path('static')),
+)
 
