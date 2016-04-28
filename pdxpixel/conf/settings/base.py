@@ -23,7 +23,11 @@ CONF_DIR = environ.Path(__file__) - 2
 # /home/nick/dev/django/projects/pdxpixel/pdxpixel/conf/settings
 SETTINGS_DIR = environ.Path(__file__) - 1
 
+SITE_ID = 1
+
 DEBUG = True
+
+APPEND_SLASH = False
 
 TEMPLATES = [
     {
@@ -46,13 +50,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'core.signals',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'apps.blog',
+    'core',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -63,6 +72,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'conf.urls'

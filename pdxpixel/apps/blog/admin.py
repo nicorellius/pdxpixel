@@ -1,8 +1,17 @@
 from django.contrib import admin
+from django.db import models
+
+from pagedown.widgets import AdminPagedownWidget
+
+
 from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
+
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget},
+    }
 
     # fields display on change list
     list_display = ['title', 'description']
@@ -19,7 +28,7 @@ class PostAdmin(admin.ModelAdmin):
     # enable the save buttons on top on change form
     save_on_top = True
     
-    # prepopulate the slug from the title - big timesaver!
+    # pre-populate the slug from the title - big time saver!
     prepopulated_fields = {"slug": ("title",)}
 
 

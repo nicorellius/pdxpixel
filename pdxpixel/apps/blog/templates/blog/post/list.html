@@ -7,35 +7,39 @@
 <!-- Blog Entries Column -->
 <div class="col-md-8">
 
-    <h1 style="margin: -1em 0 0 3em;">Blog Archive</h1>
+    <h1 class="page-title">
+        Blog Archive<br>
+        <span class="page-description">
+            Articles about development and technology
+        </span>
+    </h1>
 
     <hr>
 
     {% for post in posts %}
     <div class="post">
-        <h3>
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        </h3>
-        <p>{{ post.description }}</p>
-
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        <h4>{{ post.description }}</h4>
+        <p class="tags"><strong>Tags: </strong>{{ post.tags.all|join:', ' }}</p>
     </div>
 
     <p class="lead">
         by <a href="#">{{ post.author }}</a>
     </p>
+
     <p class="italics">
         <span class="glyphicon glyphicon-time"></span>
         Posted on
-        <time datetime="{{ post.pub_date|date:"c" }}">
-        {{ post.pub_date|date }}
+        <time datetime="{{ post.published|date:"c" }}">
+        {{ post.published|date }}
         </time>
     </p>
 
     <hr>
 
-    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
-    <hr>
+{#    <img class="img-responsive" src="http://placehold.it/900x300" alt="">#}
+{##}
+{#    <hr>#}
 
     <p></p>
 
@@ -45,6 +49,8 @@
     {% endfor %}
 
     <hr>
+
+    {% include 'pagination.html' with page=page_obj %}
 
     <!-- Pager -->
     <ul class="pager">

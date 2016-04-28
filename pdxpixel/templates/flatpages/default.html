@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load markdown_deux_tags %}
+
+{% block title %}{{ flatpage.title }}{% endblock title %}
+
+{% block flatpage %}
+
+    <div class="col-md-8">
+
+        <h1 class="flatpage-title">
+            {{ flatpage.title }}<br>
+            <span class="flatpage-description">{{ flatpage.description }}</span>
+        </h1>
+
+        <hr>
+
+        {{ flatpage.content|markdown }}
+
+    </div>
+
+{% endblock flatpage %}

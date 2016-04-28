@@ -1,29 +1,39 @@
 {% extends 'blog/base.html' %}
+{% load markdown_deux_tags %}
 
 {% block title %}{{ post.title }}{% endblock title %}
 
-{% block content %}
+{% block blog_post %}
 
-    <h1>{{ post.title }}</h1>
+<!-- Blog Entries Column -->
+<div class="col-md-8">
+
+    <h1 class="detail-title">{{ post.title }}</h1>
+
+    <hr>
+
+    <h2 class="detail-description">{{ post.description }}</h2>
 
     <p class="date">
-        Published {{ post.published }} by {{ post.author }}
+        Published on
+        <time datetime="{{ post.published|date:"c" }}">
+            {{ post.published|date }}
+        </time>
+        by <a href="#">{{ post.author }}</a>
     </p>
 
-    {{ post.content|linebreaks }}
+    {{ post.content|markdown }}
 
     <div class="blog-comments wmd-input">
 
-        <h3>User comments</h3>
+        <h3>Comments</h3>
 
         <div id="disqus_thread"></div>
 
-        <script type="text/javascript">
-        //CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE
-
+        <script>
         var disqus_shortname = 'pdxpixel'; // required: replace example with your forum shortname
 
-        // DONT EDIT THIS FUNCTION
+        // DON'T EDIT THIS FUNCTION
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -31,9 +41,17 @@
         })();
         </script>
 
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>
+            Please enable JavaScript to view the
+            <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.
+            </a>
+        </noscript>
 
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <a href="http://disqus.com" class="dsq-brlink">
+            Comments powered by <span class="logo-disqus">Disqus</span>
+        </a>
 
     </div>
-{% endblock content %}
+
+</div>
+{% endblock blog_post %}
