@@ -1,10 +1,10 @@
-{% extends 'blog/base.html' %}
+{% extends 'base_blog.html' %}
+{% load staticfiles %}
 
 {% block title %} Blog Archive {% endblock %}
 
 {% block blog_list %}
 
-<!-- Blog Entries Column -->
 <div class="col-md-8">
 
     <h1 class="page-title">
@@ -37,11 +37,9 @@
 
     <hr>
 
-{#    <img class="img-responsive" src="http://placehold.it/900x300" alt="">#}
-{##}
-{#    <hr>#}
-
-    <p></p>
+    {#<img class="img-responsive" src="http://placehold.it/900x300" alt="">#}
+    {##}
+    {#<hr>#}
 
     <a class="btn btn-primary" href="{{ post.get_absolute_url }}">
         Read More <span class="glyphicon glyphicon-chevron-right"></span>
@@ -52,7 +50,6 @@
 
     {% include 'pagination.html' with page=page_obj %}
 
-    <!-- Pager -->
     <ul class="pager">
         <li class="previous">
             <a href="#">&larr; Older</a>

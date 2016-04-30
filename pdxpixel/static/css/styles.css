@@ -2,7 +2,19 @@
 styles.css
 */
 
+/***** global styles *****/
+
+body {
+    background-color: #eeeeee;
+}
+
+
+
+
+/***** helper, utility styles *****/
+
 .strong { font-weight: bold; }
+.clear-both { clear: both; }
 
 
 /* margins, padding, etc */
@@ -13,9 +25,19 @@ styles.css
 .mv-up-4em { margin-top: -4em; }
 .mv-up-5em { margin-top: -5em; }
 
+
+
+
+
+/***** specific styles *****/
+
 .detail-title {
     margin: -2em 0 0 3.5em;
     font-size: 28px;
+}
+
+.search-results {
+    font-size: 18px;
 }
 
 .detail-description {

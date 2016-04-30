@@ -14,17 +14,22 @@ handler502 = 'core.views.custom_bad_gateway'
 
 urlpatterns = [
 
-    url(r'^$', TemplateView.as_view(template_name="base.html"), name='home-page-view'),
+    url(r'^$', TemplateView.as_view(template_name="index.html"), name='home-page-view'),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^blog/', include('apps.blog.urls', namespace='blog', app_name='blog')),
 
+    url(r"^search/", include("watson.urls", namespace="watson"), {
+        'template_name': 'base_search.html',
+        'context_object_name': 'results',
+    })
+
     # url(r'^(\d)/$', 'core.views.custom_server_error'),
 ]
 
 # catchall for flatpages
-urlpatterns += [url(r'^(?P<url>.*)$', views.flatpage)]
+urlpatterns += [url(r'^(?P<url>.*)/$', views.flatpage)]
 
 urlpatterns += staticfiles_urlpatterns()

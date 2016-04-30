@@ -11,15 +11,6 @@ class ExtendedFlatPageAdmin(FlatPageAdmin):
 
     form = FlatpageForm
 
-    # fieldsets = (
-    #     (None, {
-    #         'fields': (
-    #             'url', 'title', 'content', 'description', 'template_name',
-    #             'enable_comments', 'registration_required'
-    #             ),
-    #     }),
-    # )
-
     fieldsets = (
         (None, {'fields': ('url', 'title', 'description', 'content', 'sites')}),
         (_('Advanced options'), {

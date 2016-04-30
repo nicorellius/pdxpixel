@@ -1,0 +1,26 @@
+{% extends 'base_blog.html' %}
+{% load watson %}
+
+{% block title %}PDX Pixel Blog Search Results{% endblock title %}
+
+{% block search_block %}
+<div class="col-md-8">
+
+    <h1 class="detail-title">
+        Search results{% if query %} for &ldquo;{{ query }}&rdquo;{% endif %}<br>
+        <span class="detail-description">View results below, and click one to continue</span>
+    </h1>
+    <hr>
+
+    {% if results %}
+        {% for result in results %}
+            <p class="search-results">
+                <a href="{{ result.url }}">{{ result.title }}</a>
+            </p>
+        {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock search_block %}
+
+</table>

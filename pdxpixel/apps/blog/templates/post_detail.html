@@ -1,20 +1,29 @@
-{% extends 'blog/base.html' %}
+{% extends 'base_blog.html' %}
+{% load staticfiles %}
 {% load markdown_deux_tags %}
 
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block blog_post %}
 
-<!-- Blog Entries Column -->
 <div class="col-md-8">
 
-    <h1 class="detail-title">{{ post.title }}</h1>
-
-    <hr>
-
-    <h2 class="detail-description">{{ post.description }}</h2>
+    {% if post.title|length < 40 %}
+        <h1 class="detail-title">
+            {{ post.title }}<br>
+            <span class="detail-description">{{ post.description }}</span>
+        </h1>
+        <hr>
+    {% else %}
+        <h1 class="detail-title">
+            {{ post.title }}<br>
+        </h1>
+        <hr>
+        <p class="detail-description">{{ post.description }}</p>
+    {% endif %}
 
     <p class="date">
+        <span class="glyphicon glyphicon-time"></span>
         Published on
         <time datetime="{{ post.published|date:"c" }}">
             {{ post.published|date }}

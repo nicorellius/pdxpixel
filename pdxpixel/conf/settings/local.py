@@ -10,7 +10,8 @@ INSTALLED_APPS += (
     'debug_toolbar',
     'pagedown',
     'markdown_deux',
-    'taggit'
+    'taggit',
+    'watson'
 )
 
 MARKDOWN_DEUX_STYLES = {

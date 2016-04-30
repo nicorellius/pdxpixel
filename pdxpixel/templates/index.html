@@ -1,1 +1,23 @@
 {% include 'base.html' %}
+{% load staticfiles %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+    <div class="container">
+        <img style="margin: 4em 0 0 0;" src="{% static 'images/pdxpixel_logo.png' %}">
+        <h1 style="margin: -1em 0 0.5em 2em;">Portland, Pixels, and Pandas</h1>
+        <p>
+            A weblog about IT, operations, automated testing, web application development,
+            and delivering high quality software to the world... and a bit about ukuleles.
+        </p>
+        <div style="max-width: 300px; padding-top: 20px;" class="">
+            <p>
+                <a class="btn btn-block btn-primary btn-lg" href="{% url 'blog:post-list-view' %}" role="button">
+                    Read some articles <span class="glyphicon glyphicon-share-alt"></span>
+                </a>
+            </p>
+        </div>
+
+    </div>
+</div>
+{% endblock jumbotron %}
