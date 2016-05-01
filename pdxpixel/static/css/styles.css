@@ -6,6 +6,7 @@ styles.css
 
 body {
     background-color: #eeeeee;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 
@@ -51,4 +52,27 @@ body {
 
 .flatpage-description, .page-description {
     font-size: 18px;
+}
+
+
+
+/***** bootstrap tweaks *****/
+
+.navbar-inverse {
+    background: none #214c5c;
+    border-color: #91001b;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: #d0d0d0;
+}
+
+.btn-primary {
+    background: none #5a5b27;
+    border-color: #4E4F23;
+}
+
+.btn-primary:hover, .btn-primary:active:focus {
+    background: none #4E4F23;
+    border-color: #3C3D19;
 }

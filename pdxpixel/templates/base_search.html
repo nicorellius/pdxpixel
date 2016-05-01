@@ -18,6 +18,12 @@
                 <a href="{{ result.url }}">{{ result.title }}</a>
             </p>
         {% endfor %}
+
+    {% else %}
+        <h4>No search results available.</h4>
+        {% if not query %}
+            <p>Please enter a search query in the search form.</p>
+        {% endif %}
     {% endif %}
 
 </div>
