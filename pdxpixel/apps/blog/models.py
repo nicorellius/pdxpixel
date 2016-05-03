@@ -36,7 +36,7 @@ class Post(models.Model):
         return self.published >= timezone.now() - datetime.timedelta(days=1)
 
     def get_absolute_url(self):
-        return reverse('blog:get-post-detail-view', args=[
+        return reverse('blog:post-detail', args=[
             self.published.year,
             self.published.strftime('%m'),
             self.published.strftime('%d'),

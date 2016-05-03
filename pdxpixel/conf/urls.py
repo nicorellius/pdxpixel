@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 
 from apps.blog.sitemaps import PostSitemap
 
+
 # error pages
 handler400 = 'core.views.custom_bad_request'
 handler403 = 'core.views.custom_permission_denied'
@@ -25,6 +26,10 @@ urlpatterns = [
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^accounts/', include('apps.accounts.urls',
+                               namespace='accounts',
+                               app_name='accounts')),
 
     url(r'^blog/', include('apps.blog.urls', namespace='blog', app_name='blog')),
 

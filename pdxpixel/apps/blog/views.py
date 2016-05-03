@@ -9,14 +9,14 @@ class PostListView(ListView):
     model = Post
     context_object_name = 'posts'
     paginate_by = 3
-    template_name = 'post_list.html'
+    template_name = 'blog/post_list.html'
 
 
 class GetPostDetailView(View):
 
     model = Post
     context_object_name = 'post'
-    template_name = 'post_detail.html'
+    template_name = 'blog/post_detail.html'
 
     def get(self, request, year, month, day, entry):
 

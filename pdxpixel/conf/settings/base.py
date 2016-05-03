@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 # Build paths inside the project like this: os.path.join(*_DIR, ...)
 import environ  # https://github.com/joke2k/django-environ
 
+from django.core.urlresolvers import reverse_lazy
+
 # /home/nick/dev/django/projects/pdxpixel
 PROJECT_DIR = environ.Path(__file__) - 4
 
@@ -29,6 +31,8 @@ DEBUG = True
 
 APPEND_SLASH = False
 
+ALLOWED_HOSTS = []
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -38,18 +42,21 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                "django.contrib.auth.context_processors.auth",
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages'
             ],
             'debug': True
         }
     }
 ]
 
-ALLOWED_HOSTS = []
-
-# Application definition
-
 INSTALLED_APPS = [
+    'apps.accounts',
     'core.signals',
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -61,6 +68,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
+    'pagedown',
+    'markdown_deux',
+    'taggit',
+    'watson',
+    'bootstrapform',
     'apps.blog',
     'core',
 ]
@@ -80,9 +92,6 @@ ROOT_URLCONF = 'conf.urls'
 
 # WSGI_APPLICATION = 'pdxpixel.conf.wsgi.local'
 
-# Database
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
 with open('/etc/prv/pdxpixel/db_password.txt') as db_password:
     DB_PASSWORD = db_password.read().strip()
 
@@ -97,20 +106,16 @@ DATABASES = {
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/dev/topics/i18n/
+LOGIN_REDIRECT_URL = reverse_lazy('blog:post-list')
+LOGIN_URL = reverse_lazy('accounts:login')
+LOGOUT_URL = reverse_lazy('accounts:logout')
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-# static files
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

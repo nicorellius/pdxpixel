@@ -1,0 +1,33 @@
+{% extends 'base_blog.html' %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{% block title %}PDX Pixel Log in{% endblock title %}
+
+{% block authentication %}
+
+<div class="col-md-8">
+
+    <h1 class="detail-title">
+        Please log in below<br>
+        <span class="detail-description">Log in form for you!</span>
+    </h1>
+
+    <hr>
+
+{#    {% if form.errors %}#}
+{#    <div class="alert alert-danger width-content" role="alert">#}
+{#        <p class="strong">wrong shit... dont try agin you suck, testing width</p>#}
+{#    </div>#}
+{#    {% endif %}#}
+
+    <form style="width: 300px;" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+    </form>
+
+</div>
+
+{% endblock authentication %}
+

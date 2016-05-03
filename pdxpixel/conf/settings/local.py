@@ -8,10 +8,6 @@ with open('/etc/prv/pdxpixel/secret_key.txt') as secret_key:
 
 INSTALLED_APPS += (
     'debug_toolbar',
-    'pagedown',
-    'markdown_deux',
-    'taggit',
-    'watson'
 )
 
 MARKDOWN_DEUX_STYLES = {
