@@ -10,21 +10,15 @@
 
     <h1 class="detail-title">
         Please log in below<br>
-        <span class="detail-description">Log in form for you!</span>
+        <span class="detail-description">Enter username and password below.</span>
     </h1>
 
     <hr>
 
-{#    {% if form.errors %}#}
-{#    <div class="alert alert-danger width-content" role="alert">#}
-{#        <p class="strong">wrong shit... dont try agin you suck, testing width</p>#}
-{#    </div>#}
-{#    {% endif %}#}
-
     <form style="width: 300px;" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
         {{ form|bootstrap }}
-        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+        <button class="btn btn-primary btn-block mv-down-2em" type="submit">Log in</button>
     </form>
 
 </div>

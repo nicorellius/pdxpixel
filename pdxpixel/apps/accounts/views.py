@@ -3,14 +3,13 @@ from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
 from django.contrib import messages
 
-
 from .forms import LoginForm
 
 
-class UserLoginView(View):
+class LoginView(View):
 
     form_class = LoginForm
-    template_name = 'accounts/login.html'
+    template_name = 'registration/login.html'
     success_url = '/blog/'
     context_object_name = 'form'
 
@@ -58,3 +57,4 @@ class UserLoginView(View):
             'form': form,
             'error': error,
         })
+

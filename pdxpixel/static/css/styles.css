@@ -111,17 +111,24 @@ blockquote {
     background: none #5a5b27;
     border-color: #4E4F23;
 }
-
-.btn-primary:hover,
 .btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active { /*.btn-primary:active, .btn-primary:active:focus*/
+.btn-primary.focus {
+    background: none #4E4F23;
+    border-color: #3C3D19;
+}
+.btn-primary:hover {
     background: none #4E4F23;
     border-color: #3C3D19;
 }
 
-
-.open .dropdown-toggle.btn-primary {
-    background: none yellowgreen;
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus {
+    background: none #2F3F14;
     border-color: #3C3D19;
 }
