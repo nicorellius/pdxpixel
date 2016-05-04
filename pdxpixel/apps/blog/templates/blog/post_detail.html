@@ -28,7 +28,7 @@
         <time datetime="{{ post.published|date:"c" }}">
             {{ post.published|date }}
         </time>
-        by <a href="#">{{ post.author }}</a>
+        by <a href="{% url 'accounts:profile' %}">{{ post.author }}</a>
     </p>
 
     {{ post.content|markdown }}
