@@ -1,0 +1,30 @@
+{% extends 'base_blog.html' %}
+{% load staticfiles %}
+
+{% block title %}PDX Pixel profile{% endblock title %}
+
+{% block profile %}
+
+<div class="col-md-8">
+
+    <h1 class="detail-title">
+        User profile<br>
+        <span class="detail-description">You can edit your prodile  below.</span>
+    </h1>
+
+    <hr>
+
+    {% if error %}
+    <div class="alert alert-danger width-content" role="alert">
+        <p class="strong">{{ error }}</p>
+    </div>
+    {% endif %}
+
+    <p><span class="strong">Name:</span> {{ profile.name }}</p>
+    <p><span class="strong">Username:</span> {{ profile.user }}</p>
+    <p><span class="strong">Title:</span> {{ profile.title }}</p>
+
+</div>
+
+{% endblock profile %}
+

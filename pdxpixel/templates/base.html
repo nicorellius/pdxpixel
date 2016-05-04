@@ -62,11 +62,24 @@
                 <li role="presentation" title="Contact">
                     <a href="/contact/">Contact</a>
                 </li>
+
                 {% if user.is_authenticated %}
-                <li title="Log out">
-                    <a href="{% url 'accounts:logout' %}">
-                        <span class="glyphicon glyphicon-off"></span>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <span class="caret"></span>
                     </a>
+                    <ul class="dropdown-menu">
+                        <li role="presentation" title="User Profile">
+                            <a href="{% url 'accounts:profile' %}">Profile</a>
+                        </li>
+                        <li role="presentation" title="User Settings">
+                            <a href="#settings">Settings</a>
+                        </li>
+                        <li title="Log out">
+                            <a href="{% url 'accounts:logout' %}">Log out</a>
+                        </li>
+                    </ul>
                 </li>
                 {% else %}
                 <li title="Log in">

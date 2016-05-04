@@ -1,9 +1,17 @@
-from django.shortcuts import render, HttpResponseRedirect
+import logging
+
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 from .forms import LoginForm
+from .models import UserProfile
+
+
+logger = logging.getLogger(__name__)
 
 
 class LoginView(View):
@@ -57,4 +65,23 @@ class LoginView(View):
             'form': form,
             'error': error,
         })
+
+
+class ProfileView(View):
+
+    model = UserProfile
+    template_name = 'accounts/profile.html'
+
+    @method_decorator(login_required)
+    def get(self, request):
+
+        if request.user.username:
+
+            profile = get_object_or_404(self.model, user=request.user)
+
+            data_dict = {
+                'profile': profile,
+            }
+
+            return render(request, self.template_name, data_dict)
 

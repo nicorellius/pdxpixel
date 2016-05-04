@@ -15,10 +15,18 @@
 
     <hr>
 
+    {% if error %}
+    <div class="alert alert-danger width-content" role="alert">
+        <p class="strong">{{ error }}</p>
+    </div>
+    {% endif %}
+
     <form style="width: 300px;" action="{% url 'accounts:login' %}" method="post">
         {% csrf_token %}
         {{ form|bootstrap }}
-        <button class="btn btn-primary btn-block mv-down-2em" type="submit">Log in</button>
+        <button class="btn btn-primary btn-block mv-down-2em" type="submit">
+            Log in
+        </button>
     </form>
 
 </div>
