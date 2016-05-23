@@ -1,11 +1,14 @@
 import logging
 
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.generic.base import View
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+
+from core.receivers import on_user_logged_out
+from core.util import get_timestamp
 
 from .forms import LoginForm
 from .models import UserProfile
@@ -52,6 +55,14 @@ class LoginView(View):
                         'User {0} successfully logged in.'.format(user)
                     )
 
+                    logger.info(
+                        '[{0}] POST user logged in: {1}'.format(
+                            get_timestamp(), request.user)
+                    )
+
+                    # TODO -- why is this not used rather than above message.
+                    # messages.success(request, 'logged in successfully')
+
                     return HttpResponseRedirect(self.success_url)
 
                 else:
@@ -65,6 +76,21 @@ class LoginView(View):
             'form': form,
             'error': error,
         })
+
+
+class LogoutView(View):
+
+    template_name = 'registration/logged_out.html'
+
+    def get(self, request):
+
+        logger.info('[{0}] {1}'.format(
+            get_timestamp(), on_user_logged_out)
+        )
+
+        response = logout(request)
+
+        return render(response, self.template_name)
 
 
 class ProfileView(View):

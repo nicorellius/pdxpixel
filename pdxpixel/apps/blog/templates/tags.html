@@ -1,0 +1,30 @@
+{% extends 'base_blog.html' %}
+{% load staticfiles %}
+
+{% block title %}PDX Pixel Tags{% endblock title %}
+
+{% block tag_list %}
+<div id="tag-list">
+    <div class="col-md-8">
+
+        <h1 class="detail-title">
+            Most Popular Tags<br>
+            <span class="detail-description">Click on a tag to view statistics</span>
+        </h1>
+
+        <hr>
+
+        {% for tag in tags %}
+        {{ tag.name }},
+        {% endfor %}
+
+
+        {% for tag in tags %}
+            <a href="{{ tag.slug }}"></a>
+        {% empty %}
+            No Tags
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock tag_list %}

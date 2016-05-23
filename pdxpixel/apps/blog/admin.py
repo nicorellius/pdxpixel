@@ -14,7 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     }
 
     # fields display on change list
-    list_display = ['title', 'description']
+    list_display = ['title', 'description', 'status']
     
     # fields to filter the change list with
     list_filter = ['status', 'published']

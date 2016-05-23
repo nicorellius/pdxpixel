@@ -1,0 +1,42 @@
+{% extends 'base_blog.html' %}
+{% load watson %}
+
+{% block title %}PDX Pixel Blog Search Results{% endblock title %}
+
+{% block search_block %}
+
+<div id="search-page">
+
+    <div class="col-md-8">
+
+        <h1 class="detail-title">
+            Search results{% if query %} for &ldquo;{{ query }}&rdquo;{% endif %}<br>
+            <span class="detail-description">View results below, and click one to continue</span>
+        </h1>
+        <hr>
+
+        {% if results %}
+            {% for result in results %}
+                <div class="list-group width-600px">
+                    <a href="{{ result.url }}" class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ result.title }}</h4>
+                        <p class="list-group-item-text">{{ result.object.description }}</p>
+                    </a>
+                </div>
+    {#            <p class="search-results">#}
+    {#                <a href="{{ result.url }}">{{ result.title }}</a><br>#}
+    {#                <span class="small">{{ result.object.description }}</span>#}
+    {#            </p>#}
+            {% endfor %}
+
+        {% else %}
+            <h4>No search results available.</h4>
+            {% if not query %}
+                <p>Please enter a search query in the search form.</p>
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock search_block %}

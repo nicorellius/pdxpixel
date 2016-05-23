@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load taggit_templatetags2_tags %}
 
 {% block styles %}
     <link href="{% static 'css/blog.css' %}" rel="stylesheet" media="screen">
@@ -12,38 +13,28 @@
             <img style="margin-left: 1em;" src="{% static 'images/pdxpixel_logo.png' %}">
         </a>
 
-        <div id="blog-list">
-            {% block blog_list %}{% endblock blog_list %}
-        </div>
+        {% block blog_list %}{% endblock blog_list %}
+        {% block blog_post %}{% endblock blog_post %}
+        {% block flatpage %}{% endblock flatpage %}
+        {% block search_block %}{% endblock search_block %}
+        {% block profile %}{% endblock profile %}
+        {% block tag_list %}{% endblock tag_list %}
 
-        <div id="blog-post">
-            {% block blog_post %}{% endblock blog_post %}
-        </div>
-
-        <div id="flatpage">
-            {% block flatpage %}{% endblock flatpage %}
-        </div>
-
-        <div>
-            {% block search_block %}{% endblock search_block %}
-        </div>
-
-        <div>
+        <div id="accounts-section">
             {% block authentication %}{% endblock authentication %}
-        </div>
-
-        <div>
-            {% block profile %}{% endblock profile %}
         </div>
 
         <div class="col-md-4 mv-up-5em">
 
             <div class="well">
-                <h4><span class="glyphicon glyphicon-search"></span> &nbsp;Blog Search</h4>
+                <h4><span class="glyphicon glyphicon-search"></span>
+                    &nbsp;Blog Search
+                </h4>
                 <form action="{% url 'watson:search' %}">
                     <div class="input-group">
                         <label for="search"></label>
-                        <input id="search" class="form-control" type="text" name="q" value="{{request.GET.q}}">
+                        <input id="search" class="form-control"
+                            type="text" name="q" value="{{ request.GET.q }}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">
                                 Go!
@@ -54,19 +45,24 @@
             </div>
 
             <div class="well">
-                <h4><span class="glyphicon glyphicon-tags"></span> &nbsp; Popular Tags</h4>
+                <h4><span class="glyphicon glyphicon-tags"></span>
+                    &nbsp; Popular Tags
+                </h4>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">{{ tag }}</a>
-                            </li>
-                        </ul>
+                    <div class="col-lg-12">
+                    {% get_taglist as tags %}
+                        {% for tag in tags %}
+                            {{ tag.name }},
+                        {% endfor %}
+                        <a href="{% url 'blog:tag-list' %}">view tags...</a>
                     </div>
                 </div>
             </div>
 
             <div class="well">
-                <h4><span class="glyphicon glyphicon-comment"></span> &nbsp;Questions/Comments?</h4>
+                <h4><span class="glyphicon glyphicon-comment"></span>
+                    &nbsp;Questions/Comments?
+                </h4>
                 <p>
                     Drop me a line...
                     <a href="mailto:nick@pdxpixel.com">nick@pdxpixel.com</a><br>

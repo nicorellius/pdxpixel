@@ -23,6 +23,14 @@ blockquote {
 .float-right { float: right; } /* use `.pull-right` instead, native to bootstrap*/
 .float-none { float: none; }
 
+.divider-vertical {
+    border-right: solid 1px #d0d0d0;
+    top: 15px;
+}
+
+.width-content { display: inline-block; }
+.font-16px { font-size: 16px; }
+
 /* margins, padding, etc */
 
 .mv-up-1em { margin-top: -1em; }
@@ -49,11 +57,19 @@ blockquote {
 .width-600px { max-width: 600px; }
 .width-700px { max-width: 700px; }
 
-.width-content { display: inline-block; }
-
-.font-16px { font-size: 16px; }
 
 /***** specific styles *****/
+
+.round-avatar {
+    display: block;
+    margin: 10px auto 20px;
+    width: 50px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    float: left;
+}
+
 #top-sticky-msg {
     position: fixed;
     top: 50px;
@@ -109,16 +125,16 @@ blockquote {
 
 .btn-primary {
     background: none #5a5b27;
-    border-color: #4E4F23;
+    border-color: #4e4f23;
 }
 .btn-primary:focus,
 .btn-primary.focus {
-    background: none #4E4F23;
-    border-color: #3C3D19;
+    background: none #4e4f23;
+    border-color: #3c3d19;
 }
 .btn-primary:hover {
-    background: none #4E4F23;
-    border-color: #3C3D19;
+    background: none #4e4f23;
+    border-color: #3c3d19;
 }
 
 .btn-primary:active,
@@ -129,6 +145,11 @@ blockquote {
 .btn-primary.active:focus,
 .btn-primary:active.focus,
 .btn-primary.active.focus {
-    background: none #2F3F14;
-    border-color: #3C3D19;
+    background: none #2f3f14;
+    border-color: #3c3d19;
+}
+
+#main-nav-collapse .nav .open > a {
+    background: none;
+    box-shadow: none;
 }

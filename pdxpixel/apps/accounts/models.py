@@ -1,10 +1,14 @@
 import datetime
+import logging
 
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
 
 from core.models import BaseModel
+
+
+logger = logging.getLogger(__name__)
 
 
 class UserProfile(BaseModel):

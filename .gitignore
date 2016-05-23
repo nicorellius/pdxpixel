@@ -63,3 +63,6 @@ target/
 
 #PyCharm IDE
 .idea
+
+# user uploaded images
+media

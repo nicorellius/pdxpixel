@@ -5,59 +5,65 @@
 
 {% block blog_list %}
 
-<div class="col-md-8">
+<div id="blog-list">
 
-    <h1 class="page-title">
-        Blog Archive<br>
-        <span class="page-description">
-            Articles about development and technology
-        </span>
-    </h1>
+    <div class="col-md-8">
 
-    <hr>
+        <h1 class="page-title">
+            Blog Archive<br>
+            <span class="page-description">
+                Articles about development and technology
+            </span>
+        </h1>
 
-    {% for post in posts %}
-    <div class="post">
-        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-        <h4>{{ post.description }}</h4>
-        <p class="tags"><strong>Tags: </strong>{{ post.tags.all|join:', ' }}</p>
+        <hr>
+
+        {% for post in posts %}
+            {% if post.status == 'published' %}
+            <div class="post">
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <h4>{{ post.description }}</h4>
+                <p class="tags"><strong>Tags: </strong>{{ post.tags.all|join:', ' }}</p>
+            </div>
+
+            <p class="lead font-16px">
+                by <a href="{% url 'accounts:profile' %}">{{ post.author }}</a>
+            </p>
+
+            <p class="italics">
+                <span class="glyphicon glyphicon-time"></span>
+                Posted on
+                <time datetime="{{ post.published|date:"c" }}">
+                {{ post.published|date }}
+                </time>
+            </p>
+
+            <hr>
+
+            {#<img class="img-responsive" src="http://placehold.it/900x300" alt="">#}
+            {##}
+            {#<hr>#}
+
+            <a class="btn btn-primary" href="{{ post.get_absolute_url }}">
+                Read More <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+            {% endif %}
+        {% endfor %}
+
+        <hr>
+
+        {% include 'pagination.html' with page=page_obj %}
+
+        <ul class="pager">
+            <li class="previous">
+                <a href="#">&larr; Older</a>
+            </li>
+            <li class="next">
+                <a href="#">Newer &rarr;</a>
+            </li>
+        </ul>
+
     </div>
-
-    <p class="lead font-16px">
-        by <a href="{% url 'accounts:profile' %}">{{ post.author }}</a>
-    </p>
-
-    <p class="italics">
-        <span class="glyphicon glyphicon-time"></span>
-        Posted on
-        <time datetime="{{ post.published|date:"c" }}">
-        {{ post.published|date }}
-        </time>
-    </p>
-
-    <hr>
-
-    {#<img class="img-responsive" src="http://placehold.it/900x300" alt="">#}
-    {##}
-    {#<hr>#}
-
-    <a class="btn btn-primary" href="{{ post.get_absolute_url }}">
-        Read More <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
-    {% endfor %}
-
-    <hr>
-
-    {% include 'pagination.html' with page=page_obj %}
-
-    <ul class="pager">
-        <li class="previous">
-            <a href="#">&larr; Older</a>
-        </li>
-        <li class="next">
-            <a href="#">Newer &rarr;</a>
-        </li>
-    </ul>
 
 </div>
 

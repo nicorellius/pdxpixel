@@ -1,6 +1,6 @@
 """
 file        :   fabfile.py
-date        :   2016-04-01
+date        :   2016-05-08
 module      :   deploy
 description :   fabric fabfile for deploying to staging/production
 """
@@ -17,7 +17,7 @@ from fabric.api import env, local, run, get, put
 env.use_ssh_config = True
 
 # Fill these in with project-specific values, eg, repo name, project name, etc
-PROJECT = 'fiblist'
+PROJECT = 'pdxpixel'
 GIT_USER = 'nicorellius'
 REPO_URL = 'https://github.com/{0}/{1}.git'.format(GIT_USER, PROJECT)
 SETTINGS_FOLDER = '{0}/conf/settings'.format(PROJECT)

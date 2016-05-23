@@ -13,6 +13,9 @@ import environ  # https://github.com/joke2k/django-environ
 
 from django.core.urlresolvers import reverse_lazy
 
+from core.logging import LOGGING_MODULE
+
+
 # /home/nick/dev/django/projects/pdxpixel
 PROJECT_DIR = environ.Path(__file__) - 4
 
@@ -71,9 +74,11 @@ INSTALLED_APPS = [
     'pagedown',
     'markdown_deux',
     'taggit',
+    'taggit_templatetags2',
     'watson',
     'bootstrapform',
     'apps.blog',
+    'apps.search',
     'core',
 ]
 
@@ -118,9 +123,11 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
     str(SITE_DIR.path('apps/blog/static')),
     str(SITE_DIR.path('static')),
 )
 
+LOGGING = LOGGING_MODULE

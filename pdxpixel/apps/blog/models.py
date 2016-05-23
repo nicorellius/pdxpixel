@@ -1,5 +1,6 @@
 import datetime
 
+from django.db.models import Count
 from django.utils import timezone
 from django.db import models
 from django.core.urlresolvers import reverse
@@ -16,14 +17,17 @@ class Post(models.Model):
     )
     
     title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, max_length=255, unique_for_date='published')
+    slug = models.SlugField(unique=True, max_length=255,
+                            unique_for_date='published')
     author = models.ForeignKey(User, related_name='blog_posts')
     description = models.CharField(max_length=255)
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     published = models.DateTimeField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES,
+                              default='draft')
+
     tags = TaggableManager()
 
     class Meta:
@@ -42,3 +46,6 @@ class Post(models.Model):
             self.published.strftime('%d'),
             self.slug
         ])
+
+    def tag_aggregator(self):
+        return self.objects.all().aggregate(Count('tags'))

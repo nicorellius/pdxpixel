@@ -1,12 +1,17 @@
 beautifulsoup4==4.4.0
 Django==1.9
 django-appconf==1.0.2
+django-bootstrap-form==3.2.1
+django-classy-tags==0.7.2
 django-compressor==2.0
 django-debug-toolbar==1.4
 django-environ==0.4.0
 django-localflavor==1.2
 django-markdown-deux==1.0.5
 django-pagedown==0.1.1
+django-taggit==0.18.1
+django-taggit-templatetags2==1.5.1
+django-watson==1.2.1
 docutils==0.12
 Markdown==2.6.6
 markdown2==2.3.1

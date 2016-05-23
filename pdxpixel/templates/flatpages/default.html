@@ -4,12 +4,14 @@
 {% block title %}{{ flatpage.title }}{% endblock title %}
 
 {% block flatpage %}
-
+<div id="flatpage">
     <div class="col-md-8">
 
         <h1 class="flatpage-title">
             {{ flatpage.title }}<br>
-            <span class="flatpage-description">{{ flatpage.description }}</span>
+            <span class="flatpage-description">
+                {{ flatpage.description }}
+            </span>
         </h1>
 
         <hr>
@@ -17,5 +19,5 @@
         {{ flatpage.content|markdown }}
 
     </div>
-
+</div>
 {% endblock flatpage %}

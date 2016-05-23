@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -38,7 +40,7 @@ urlpatterns = [
     }, name='django.contrib.sitemaps.views.sitemap'),
 
     url(r"^search/", include("watson.urls", namespace="watson"), {
-        'template_name': 'base_search.html',
+        'template_name': 'search/default.html',
         'context_object_name': 'results',
     })
 
@@ -49,3 +51,5 @@ urlpatterns = [
 urlpatterns += [url(r'^(?P<url>.*)/$', views.flatpage)]
 
 urlpatterns += staticfiles_urlpatterns()
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
