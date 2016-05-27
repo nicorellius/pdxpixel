@@ -21,7 +21,6 @@ class UserProfile(BaseModel):
     phone = models.CharField(max_length=20, blank=True)
     location = models.CharField(max_length=250, blank=True)
     website = models.URLField(blank=True)
-    # photo = models.ImageField(upload_to='users/photos/%Y/%m/%d', blank=True)
     avatar = models.ImageField(
         upload_to='images/avatars/%Y/%m/%d',
         default='images/avatars/avatar.png',

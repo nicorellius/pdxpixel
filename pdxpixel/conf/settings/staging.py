@@ -7,3 +7,4 @@ with open('/etc/prv/pdxpixel/secret_key.txt') as secret_key:
     SECRET_KEY = secret_key.read().strip()
 
 STATIC_ROOT = str(SITE_DIR.path('static'))
+MEDIA_ROOT = str(SITE_DIR.path('media'))

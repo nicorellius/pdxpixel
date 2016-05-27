@@ -76,10 +76,12 @@ Add user
 - Set up configuration at `/etc/init/nginx.conf`
 - See `upstart/nginx.conf` and `upstart/uwsgi.conf` for templates.
 
-## Install project
+## Install and set up project, requirements
 
 `cd ~/sites`
 `git clone http://github.com/nicorellius/pdxpixel.git`
+`apt-get install libjpeg8-dev postgresql-server.9.3`
+`pip install requirements.txt`
 
 ## TLS/SSL certificates
 
