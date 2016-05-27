@@ -14,6 +14,6 @@ from django.core.wsgi import get_wsgi_application
 
 sys.path.append('/home/django/sites/pdxpixel/pdxpixel')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pdxpixel.conf.settings.local")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pdxpixel.conf.settings.staging")
 
 application = get_wsgi_application()
