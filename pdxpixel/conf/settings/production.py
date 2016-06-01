@@ -8,3 +8,5 @@ with open('/etc/prv/pdxpixel/secret_key.txt') as secret_key:
 
 STATIC_ROOT = str(SITE_DIR.path('static'))
 MEDIA_ROOT = str(SITE_DIR.path('media'))
+
+ALLOWED_HOSTS = ['pdxpixel.com', 'www.pdxpixel.com']
