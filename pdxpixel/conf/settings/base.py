@@ -34,8 +34,6 @@ DEBUG = True
 
 APPEND_SLASH = False
 
-ALLOWED_HOSTS = []
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
