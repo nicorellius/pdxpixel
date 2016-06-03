@@ -124,7 +124,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
-    str(SITE_DIR.path('apps/blog/static')),
+    # str(SITE_DIR.path('apps/blog/static')),
     str(SITE_DIR.path('static')),
 )
 
