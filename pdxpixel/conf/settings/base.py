@@ -129,3 +129,12 @@ STATICFILES_DIRS = (
 )
 
 LOGGING = LOGGING_MODULE
+
+MARKDOWN_DEUX_STYLES = {
+    'default': {
+        'extras': {
+            'code-friendly': None,
+        },
+        'safe_mode': False,
+    },
+}

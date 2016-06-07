@@ -9,12 +9,3 @@ with open('/etc/prv/pdxpixel/secret_key.txt') as secret_key:
 INSTALLED_APPS += (
     'debug_toolbar',
 )
-
-MARKDOWN_DEUX_STYLES = {
-    'default': {
-        'extras': {
-            'code-friendly': None,
-        },
-        'safe_mode': False,
-    },
-}

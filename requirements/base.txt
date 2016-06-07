@@ -8,3 +8,5 @@ psycopg2
 django-localflavor==1.2
 sqlparse==0.1.19
 django-environ==0.4.0
+docutils==0.12
+Pillow==3.2.0
