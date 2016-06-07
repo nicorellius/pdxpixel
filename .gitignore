@@ -65,4 +65,7 @@ target/
 .idea
 
 # user uploaded images
-media
+media/
+
+# sql related
+*.sql
