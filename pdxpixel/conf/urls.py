@@ -45,8 +45,8 @@ urlpatterns = [
     }),
 
     url(r'^contact/$', views.flatpage, {'url': '/contact/'}, name='contact'),
-    url(r'^nick-vincent-maloney/$', views.flatpage, {
-        'url': '/nick-vincent-maloney/'
+    url(r'^about/nick-vincent-maloney/$', views.flatpage, {
+        'url': '/about/nick-vincent-maloney/'
     }, name='nicks-resume'),
 
     # url(r'^(\d)/$', 'core.views.custom_server_error'),
