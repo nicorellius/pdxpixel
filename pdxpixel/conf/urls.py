@@ -42,13 +42,18 @@ urlpatterns = [
     url(r"^search/", include("watson.urls", namespace="watson"), {
         'template_name': 'search/default.html',
         'context_object_name': 'results',
-    })
+    }),
+
+    url(r'^contact/$', views.flatpage, {'url': '/contact/'}, name='contact'),
+    url(r'^nick-vincent-maloney/$', views.flatpage, {
+        'url': '/nick-vincent-maloney/'
+    }, name='nicks-resume'),
 
     # url(r'^(\d)/$', 'core.views.custom_server_error'),
 ]
 
 # catchall for flatpages
-urlpatterns += [url(r'^(?P<url>.*)/$', views.flatpage)]
+# urlpatterns += [url(r'^(?P<url>.*)/$', views.flatpage)]
 
 urlpatterns += staticfiles_urlpatterns()
 
