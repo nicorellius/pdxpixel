@@ -92,7 +92,7 @@ Lets Encrypt certificates can be installed using `certbot`:
 `chmod a+x certbot-auto`
 `./certbot-auto certonly`
 
-Note that if you are running CloudFlare in front of your site, you need to disable NDS and HTTP proxy temporarily while you create the certificates.
+Note that if you are running CloudFlare in front of your site, you need to disable DNS and HTTP proxy temporarily while you create the certificates.
 
 ## Source tree
 
