@@ -69,3 +69,10 @@ media/
 
 # sql related
 *.sql
+
+# compressed files
+*.gz
+*.zip
+
+# text files, tsv, csv, etc
+*.csv
