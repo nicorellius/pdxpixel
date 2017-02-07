@@ -115,7 +115,8 @@ blockquote {
 /***** bootstrap tweaks *****/
 
 .navbar-inverse {
-    background: none #214c5c;
+    /* previously, none #214c5c; trying twitter dark theme color (#292f33)*/
+    background: none #122b40;
     border-color: #91001b;
 }
 
