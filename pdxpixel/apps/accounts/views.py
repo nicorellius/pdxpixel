@@ -63,6 +63,9 @@ class LoginView(View):
                     # TODO -- why is this not used rather than above message.
                     # messages.success(request, 'logged in successfully')
 
+                    if user.is_staff:
+                        return HttpResponseRedirect('/admin/')
+
                     return HttpResponseRedirect(self.success_url)
 
                 else:
