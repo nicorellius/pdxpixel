@@ -76,3 +76,4 @@ media/
 
 # text files, tsv, csv, etc
 *.csv
+*.csv~
