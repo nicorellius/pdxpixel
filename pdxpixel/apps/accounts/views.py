@@ -22,6 +22,7 @@ class LoginView(View):
     form_class = LoginForm
     template_name = 'registration/login.html'
     success_url = '/blog/'
+    success_url_staff = '/admin/'
     context_object_name = 'form'
 
     def get(self, request):
@@ -64,7 +65,7 @@ class LoginView(View):
                     # messages.success(request, 'logged in successfully')
 
                     if user.is_staff:
-                        return HttpResponseRedirect('/admin/')
+                        return HttpResponseRedirect(self.success_url_staff)
 
                     return HttpResponseRedirect(self.success_url)
 
